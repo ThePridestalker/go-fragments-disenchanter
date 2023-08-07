@@ -1,4 +1,4 @@
-package cmd
+package utils
 
 import (
 	"encoding/base64"
@@ -45,6 +45,11 @@ func DataRetrieval() DataResult {
 
 	host := "https://127.0.0.1"
 	username := "riot"
+
+	// if the port or the password are empty, return an empty result
+	if port == "" || password == "" {
+		return DataResult{}
+	}
 
 	// create the baseUrl
 	baseUrl := fmt.Sprintf("%s:%s", host, port)
